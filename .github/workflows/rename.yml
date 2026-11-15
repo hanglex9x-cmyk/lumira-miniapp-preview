@@ -1,0 +1,16 @@
+name: rename-preview
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git config user.name "hanglex9x-cmyk"
+          git config user.email "hanglex9x@gmail.com"
+          git rm -q --ignore-unmatch index.html
+          git mv preview-index.html index.html
+          git commit -m "Doi ten preview thanh index.html"
+          git push
