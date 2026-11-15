@@ -1,0 +1,17 @@
+name: Rename preview to index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rename preview-index.html to index.html
+        run: |
+          git config user.name "hanglex9x-cmyk"
+          git config user.email "hanglex9x-cmyk@users.noreply.github.com"
+          git mv preview-index.html index.html
+          git commit -m "Rename preview-index.html to index.html (STOREFRONT build)"
+          git push
